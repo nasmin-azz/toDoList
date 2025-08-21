@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import TodoList from "./TodoList";
 
 const Todo = () => {
+  let [todos, setTodos] = useState([
+    {
+      id: 1,
+      title: "Learn React",
+      completed: false,
+    },
+    {
+      id: 2,
+      title: "Build a To-Do App",
+      completed: false,
+    },
+    {
+      id: 3,
+      title: "Deploy the App",
+      completed: true,
+    },
+  ]);
+
   return (
     <div className="bg-gray-100">
       <div className="flex items-center justify-center h-screen">
@@ -19,7 +37,7 @@ const Todo = () => {
               className="w-full px-2 py-3 border rounded outline-none border-grey-600"
             />
           </div>
-          <TodoList />
+          <TodoList todos={todos}/>
         </div>
       </div>
     </div>

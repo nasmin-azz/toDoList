@@ -2,15 +2,18 @@ import React from "react";
 import EditTodo from "./EditTodo";
 import DeleteTodo from "./DeleteTodo";
 
-const TodoItem = () => {
+const TodoItem = ({ todo }) => {
   return (
     <div>
       <li className="relative flex items-center justify-between px-2 py-6 border-b">
         <div>
-          <input type="checkbox" className="" />
-          <p className="inline-block mt-1 ml-2 text-gray-600">
-            Eating breakfast at 7:00{" "}
-          </p>
+          <input
+            type="checkbox"
+            className=""
+            checked={todo.completed}
+            onChange={() => {}}
+          />
+          <p className={`inline-block mt-1 ml-2 text-gray-600 ${todo.completed?'line-through':''}`}>{todo.title}</p>
         </div>
         <button
           type="button"
