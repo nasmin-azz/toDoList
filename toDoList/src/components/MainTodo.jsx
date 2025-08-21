@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TodoList from "./TodoList";
 import { v4 as uuidv4 } from "uuid";
 
-const Todo = () => {
+const MainTodo = () => {
   let [todos, setTodos] = useState([
     {
       id: uuidv4(),
@@ -20,7 +20,7 @@ const Todo = () => {
       completed: true,
     },
   ]);
-  console.log(todos)
+  console.log(todos);
   function addTodo(e) {
     if (e.key === "Enter" && e.target.value.trim() !== "") {
       let newTodo = {
@@ -33,6 +33,16 @@ const Todo = () => {
     }
   }
 
+  function statusHandler(todoId) {
+   let updatedTodo= todos.map((todo) => {
+      if (todo.id === todoId) {
+        todo.completed = !todo.completed; // Toggle the completed status
+        return todo;
+      }
+      return todo;
+    });
+    setTodos(updatedTodo);
+  }
   return (
     <div className="bg-gray-100">
       <div className="flex items-center justify-center h-screen">
@@ -51,11 +61,11 @@ const Todo = () => {
               onKeyDown={addTodo}
             />
           </div>
-          <TodoList todos={todos} />
+          <TodoList todos={todos} statusHandler={statusHandler} />
         </div>
       </div>
     </div>
   );
 };
 
-export default Todo;
+export default MainTodo;

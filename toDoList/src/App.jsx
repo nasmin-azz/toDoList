@@ -1,10 +1,9 @@
-import { useState } from "react";
-import Todo from "./components/Todo";
+import MainTodo from "./components/MainTodo";
 
 function App() {
   return (
     <>
-    <Todo />
+      <MainTodo />
     </>
   );
 }

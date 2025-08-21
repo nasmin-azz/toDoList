@@ -1,6 +1,6 @@
 import React from "react";
 
-const DeleteTodo = () => {
+const DeleteTodoIcon = () => {
   return (
     <div>
       <svg
@@ -21,4 +21,4 @@ const DeleteTodo = () => {
   );
 };
 
-export default DeleteTodo;
+export default DeleteTodoIcon;
