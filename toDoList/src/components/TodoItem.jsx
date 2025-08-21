@@ -2,7 +2,7 @@ import React from "react";
 import EditTodoIcon from "./EditTodoIcon";
 import DeleteTodoIcon from "./DeleteTodoIcon";
 
-const TodoItem = ({ todo,statusHandler }) => {
+const TodoItem = ({ todo,statusHandler,removeTodoHandler }) => {
   return (
     <div>
       <li className="relative flex items-center justify-between px-2 py-6 border-b">
@@ -20,7 +20,7 @@ const TodoItem = ({ todo,statusHandler }) => {
           className="absolute right-0 flex items-center space-x-1"
         >
           <EditTodoIcon />
-          <DeleteTodoIcon />
+          <DeleteTodoIcon todo={todo} removeTodoHandler={removeTodoHandler} />
         </button>
       </li>
     </div>

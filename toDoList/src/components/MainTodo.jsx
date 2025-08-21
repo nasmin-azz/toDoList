@@ -20,7 +20,7 @@ const MainTodo = () => {
       completed: true,
     },
   ]);
-  console.log(todos);
+
   function addTodo(e) {
     if (e.key === "Enter" && e.target.value.trim() !== "") {
       let newTodo = {
@@ -34,7 +34,7 @@ const MainTodo = () => {
   }
 
   function statusHandler(todoId) {
-   let updatedTodo= todos.map((todo) => {
+    let updatedTodo = todos.map((todo) => {
       if (todo.id === todoId) {
         todo.completed = !todo.completed; // Toggle the completed status
         return todo;
@@ -43,6 +43,14 @@ const MainTodo = () => {
     });
     setTodos(updatedTodo);
   }
+
+  function removeTodoHandler(todoId) {
+   let updatedRemoveTodos= todos.filter((todo) => {
+      return todo.id !== todoId;
+    });
+    setTodos(updatedRemoveTodos);
+  }
+
   return (
     <div className="bg-gray-100">
       <div className="flex items-center justify-center h-screen">
@@ -61,7 +69,11 @@ const MainTodo = () => {
               onKeyDown={addTodo}
             />
           </div>
-          <TodoList todos={todos} statusHandler={statusHandler} />
+          <TodoList
+            todos={todos}
+            statusHandler={statusHandler}
+            removeTodoHandler={removeTodoHandler}
+          />
         </div>
       </div>
     </div>
