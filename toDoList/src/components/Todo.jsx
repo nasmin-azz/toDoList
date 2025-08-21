@@ -1,24 +1,37 @@
 import React, { useState } from "react";
 import TodoList from "./TodoList";
+import { v4 as uuidv4 } from "uuid";
 
 const Todo = () => {
   let [todos, setTodos] = useState([
     {
-      id: 1,
+      id: uuidv4(),
       title: "Learn React",
       completed: false,
     },
     {
-      id: 2,
+      id: uuidv4(),
       title: "Build a To-Do App",
       completed: false,
     },
     {
-      id: 3,
+      id: uuidv4(),
       title: "Deploy the App",
       completed: true,
     },
   ]);
+  console.log(todos)
+  function addTodo(e) {
+    if (e.key === "Enter" && e.target.value.trim() !== "") {
+      let newTodo = {
+        id: uuidv4(),
+        title: e.target.value,
+        completed: false,
+      };
+      setTodos([...todos, newTodo]);
+      e.target.value = ""; // Clear the input field after adding the todo
+    }
+  }
 
   return (
     <div className="bg-gray-100">
@@ -35,9 +48,10 @@ const Todo = () => {
               type="text"
               placeholder="What needs to be done today?"
               className="w-full px-2 py-3 border rounded outline-none border-grey-600"
+              onKeyDown={addTodo}
             />
           </div>
-          <TodoList todos={todos}/>
+          <TodoList todos={todos} />
         </div>
       </div>
     </div>
