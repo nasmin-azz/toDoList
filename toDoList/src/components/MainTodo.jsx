@@ -45,10 +45,21 @@ const MainTodo = () => {
   }
 
   function removeTodoHandler(todoId) {
-   let updatedRemoveTodos= todos.filter((todo) => {
+    let updatedRemoveTodos = todos.filter((todo) => {
       return todo.id !== todoId;
     });
     setTodos(updatedRemoveTodos);
+  }
+
+  function changeHandler(todoId, newTitle) {
+    let updatedEdits = todos.map((todo) => {
+      if (todo.id == todoId) {
+        todo.title = newTitle;
+        return todo;
+      }
+      return todo;
+    });
+    setTodos(updatedEdits);
   }
 
   return (
@@ -73,6 +84,7 @@ const MainTodo = () => {
             todos={todos}
             statusHandler={statusHandler}
             removeTodoHandler={removeTodoHandler}
+            changeHandler={changeHandler}
           />
         </div>
       </div>
