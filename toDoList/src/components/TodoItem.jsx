@@ -1,17 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import EditTodoIcon from "./EditTodoIcon";
 import DeleteTodoIcon from "./DeleteTodoIcon";
+import { NewContext } from "./NewContext";
 
-const TodoItem = ({
-  todo,
-  statusHandler,
-  removeTodoHandler,
-  changeHandler,
-}) => {
+const TodoItem = ({ todo }) => {
+  let { changeHandler, statusHandler } = useContext(NewContext);
   let [editMode, setEditMode] = useState(false);
   function closeInput(event) {
-    if (event.key == "Enter")    setEditMode(false);
- changeHandler(todo.id, event.target.value);
+    if (event.key == "Enter") setEditMode(false);
+    changeHandler(todo.id, event.target.value);
   }
   return (
     <div>
@@ -50,10 +47,7 @@ const TodoItem = ({
               className="absolute right-0 flex items-center space-x-1"
             >
               <EditTodoIcon setEditMode={setEditMode} />
-              <DeleteTodoIcon
-                todo={todo}
-                removeTodoHandler={removeTodoHandler}
-              />
+              <DeleteTodoIcon todo={todo} />
             </button>
           </div>
         )}

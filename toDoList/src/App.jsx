@@ -1,10 +1,13 @@
 import MainTodo from "./components/MainTodo";
+import {AppDataProvider} from "./components/NewContext";
 
 function App() {
   return (
-    <>
-      <MainTodo />
-    </>
+    <AppDataProvider>
+      <div>
+        <MainTodo />
+      </div>
+    </AppDataProvider>
   );
 }
 

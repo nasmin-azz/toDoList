@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { NewContext } from "./NewContext";
 
-const DeleteTodoIcon = ({todo,removeTodoHandler}) => {
+const DeleteTodoIcon = ({ todo }) => {
+  let { removeTodoHandler } = useContext(NewContext);
   return (
     <div>
       <svg
-      onClick={()=>removeTodoHandler(todo.id)}
+        onClick={() => removeTodoHandler(todo.id)}
         xmlns="http://www.w3.org/2000/svg"
         className="w-5 h-5 text-red-700"
         fill="none"
